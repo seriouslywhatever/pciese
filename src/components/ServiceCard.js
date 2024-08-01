@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'flowbite-react';
+import { Card, Button} from 'flowbite-react';
 
 const ServiceCard = ({ title, url }) => {
     return (
@@ -10,9 +10,10 @@ const ServiceCard = ({ title, url }) => {
                     {title}
                 </h5>
                 <div style={{ justifyContent: 'center', display: 'flex' }}>
-                    <button style={{ padding: '8px', backgroundColor: '#0824a4', color: 'white', borderRadius: '12px', width: '12vw' }}>
+                    {/* <button style={{ padding: '8px', backgroundColor: '#0824a4', color: 'white', borderRadius: '12px', width: '12vw' }}>
                         Learn more
-                    </button>
+                    </button> */}
+                    <Button color="blue">Learn more</Button>
                 </div>
             </Card>
         </div>
