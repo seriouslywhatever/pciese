@@ -2,6 +2,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  height: 1500px;
 }
 
 .Header {
@@ -57,11 +58,8 @@
 }
 
 .nav-links {
-  list-style: none;
-  /* remove list points */
+  list-style: none; /* remove list points */
   display: flex;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-links li {

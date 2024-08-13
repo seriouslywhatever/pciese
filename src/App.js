@@ -115,6 +115,9 @@ function App() {
 
   return (
     <div className="App">
+      <div>
+
+      </div>
       <div className='Header' style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ display: 'flex', flex: 3, flexDirection: 'row' }}>
           <img src={logo} className="App-logo" alt="logo" />
@@ -139,11 +142,11 @@ function App() {
           </div>
         </div>
       </div>
-      <div style={{ flexDirection: 'row', display: 'flex' }}>
+      <div style={{ flexDirection: 'row', display: 'flex', position: 'sticky', top: 0, zIndex: 1000 }}>
         <div style={{ flex: 8 }}>
           <nav className="nav">
             <ul className="nav-links">
-              <li><a href="#">{t('Home')}</a></li>
+              <li><a href="#top">{t('Home')}</a></li>
               <li><a href="#section_about_us">{t('About Us')}</a></li>
               <li><a href="#section_services">{t('Services')}</a></li>
               <li><a href="#">{t('Contact Us')}</a></li>
@@ -171,7 +174,8 @@ function App() {
       <img src={home} alt='main image' style={{ height: '100vh', width: '100%' }} />
       <div>
         <div>
-          <div className='section-heading' id='section_about_us'>
+          <HR.Trimmed id='section_about_us' />
+          <div className='section-heading'>
             <span className="line"></span>
             <h1 className='section-title'>{t('About Us')}</h1>
             <span className="line"></span>
@@ -188,9 +192,9 @@ function App() {
             </div>
           </div>
         </div>
-        <HR.Trimmed />
+        <HR.Trimmed id='section_services' />
         <div>
-          <div className='section-heading' id='section_services'>
+          <div className='section-heading'>
             <span className="line"></span>
             <h1 className='section-title'>{t('Services')}</h1>
             <span className="line"></span>
