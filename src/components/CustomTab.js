@@ -1,11 +1,14 @@
 import React from 'react';
 import { Tabs } from 'flowbite-react';
+import { useTranslation } from 'react-i18next';
 
 const CustomTab = ({ }) => {
+    const { t } = useTranslation();
+
     const customTheme = {
         "tablist": {
             "tabitem": {
-                "base": "flex items-center justify-center rounded-t-lg p-4 text-sm font-medium first:ml-0 focus:outline-none focus:ring-2 focus:ring-gray-300",
+                "base": "flex items-center justify-center rounded-t-lg p-2 text-sm font-medium first:ml-0 focus:outline-none focus:ring-2 focus:ring-gray-300",
                 "variant": {
                     "default": {
                         "base": "rounded-t-lg",
@@ -21,20 +24,20 @@ const CustomTab = ({ }) => {
 
     return (
         <Tabs aria-label="project types" variant="default" theme={customTheme}>
-            <Tabs.Item active title="Urban planning">
-                We conduct topographic surveys, adjust parceling according to local urban variables, and modify terraces based on the original topography and external drainage requirements.
+            <Tabs.Item active title={t('Tab item 1 title')}>
+                {t('Tab item 1')}
             </Tabs.Item>
-            <Tabs.Item title="Water management systems">
-                Our water management systems include the development of aqueducts, sewer systems, and drainage projects for urban areas. We also design potable water systems (both cold and hot) and sanitary installations with appropriate stormwater disposal in buildings, as well as swimming pools for private or public use, including the necessary suction, recirculation pipes, and structural solutions tailored to the environment.
+            <Tabs.Item title={t('Tab item 2 title')}>
+                {t('Tab item 2')}
             </Tabs.Item>
-            <Tabs.Item title="Architectural design">
-                For housing and buildings, we develop architectural and structural projects in accordance with local regulations.
+            <Tabs.Item title={t('Tab item 3 title')}>
+                {t('Tab item 3')}
             </Tabs.Item>
-            <Tabs.Item title="Structural engineering">
-                Our bridge designs encompass pedestrian, vehicular, and service bridges, using materials and methods such as reinforced concrete, metal beams, and pre-tensioned or post-tensioned structures, as well as suspension bridges.
+            <Tabs.Item title={t('Tab item 4 title')}>
+                {t('Tab item 4')}
             </Tabs.Item>
-            <Tabs.Item title="Sanitary installations">
-                We handle the design and implementation of sanitary installations, ensuring proper potable water systems and effective stormwater disposal in buildings.
+            <Tabs.Item title={t('Tab item 5 title')}>
+                {t('Tab item 5')}
             </Tabs.Item>
         </Tabs>
     );
