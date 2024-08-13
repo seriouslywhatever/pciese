@@ -60,6 +60,13 @@ const resources = {
             "Service card 6 preText": "This service involves the Construction and or Inspection of Infrastructure and Superstructure Works in Roads and Buildings, Aqueducts, Sewers, and Drainage in Urban Developments, Potable Water and Sanitary Installations in Housing and Buildings, etc. It also includes performing Quality Control of Concrete, Soil, and Asphalt.",
 
             "Learn more": "learn More",
+
+            "Full name": "Full Name*",
+            "Email": "Email*",
+            "Phone": "Phone",
+            "Message": "You're Message",
+            "Placeholder comment": "Leave a comment...",
+            "Submit": "Submit",
         }
     },
     es: {
@@ -120,6 +127,13 @@ const resources = {
             "Service card 6 preText": "Este servicio implica la Construcción y/o Inspección de Obras de Infraestructura y Superestructura en Carreteras y Edificios, Acueductos, Alcantarillados y Drenajes en Desarrollos Urbanos, Agua Potable e Instalaciones Sanitarias en Viviendas y Edificios, etc. También incluye realizar Control de Calidad de Concreto, Suelo y Asfalto.",
 
             "Learn more": "Saber Más",
+
+            "Full name": "Nombre completo*",
+            "Email": "Correo electrónico*",
+            "Phone": "Teléfono",
+            "Message": "Tu mensaje",
+            "Placeholder comment": "Deja un comentario...",
+            "Submit": "Enviar"
         }
     }
 };
