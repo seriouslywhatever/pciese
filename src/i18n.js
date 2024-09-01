@@ -61,12 +61,14 @@ const resources = {
 
             "Learn more": "learn More",
 
-            "Full name": "Full Name*",
-            "Email": "Email*",
+            "Full name": "Full Name",
+            "Email": "Email",
             "Phone": "Phone",
-            "Message": "You're Message",
+            "Message": "Your Message",
             "Placeholder comment": "Leave a comment...",
             "Submit": "Submit",
+            "SuccessMessage": "Email was sent successfully",
+            "FailMessage": "An Error has occured, Email was not sent"
         }
     },
     es: {
@@ -128,12 +130,14 @@ const resources = {
 
             "Learn more": "Saber Más",
 
-            "Full name": "Nombre completo*",
-            "Email": "Correo electrónico*",
+            "Full name": "Nombre completo",
+            "Email": "Correo electrónico",
             "Phone": "Teléfono",
             "Message": "Tu mensaje",
             "Placeholder comment": "Deja un comentario...",
-            "Submit": "Enviar"
+            "Submit": "Enviar",
+            "SuccessMessage": "El correo electrónico se envió correctamente",
+            "FailMessage": "Ocurrió un error, el correo electrónico no se envió"
         }
     }
 };
