@@ -40,7 +40,7 @@ import cmp2 from '../images/services/computos_metricos_part_2.png';
 
 const Home = () => {
     const { t, i18n } = useTranslation();
-    const [langImg, setLangImg] = useState(en);
+    const [langImg, setLangImg] = useState();
 
     const [navStyle, setNavStyle] = useState({
         flexDirection: 'row',
@@ -144,12 +144,24 @@ const Home = () => {
     // ).toString();
 
     useEffect(() => {
+
         switch (i18n.language) {
-            case "en": setLangImg(en);
+            case "en":
+                setLangImg(en);
+                localStorage.setItem("lang", "en");
                 break;
-            case "es": setLangImg(sp);
+            case "es":
+                setLangImg(sp);
+                localStorage.setItem("lang", "es");
                 break;
-            default: setLangImg(en);
+            default:
+                let lang = localStorage.getItem("lang");
+                if (lang) {
+                    i18n.changeLanguage(lang);
+                } else {
+                    localStorage.setItem("lang", "en");
+                    i18n.changeLanguage("en");
+                }
         }
     });
 

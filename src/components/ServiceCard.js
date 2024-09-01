@@ -20,14 +20,14 @@ const ServiceCard = ({ modal, manageNav }) => {
                             {modal.preText}
                         </p>
                         {
-                            modal.body.map((item) => {
-                                return <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">{item}</p>
+                            modal.body.map((item, index) => {
+                                return <p key={index} className="text-base leading-relaxed text-gray-500 dark:text-gray-400">{item}</p>
                             })
                         }
                         <div style={{ display: 'flex', flexDirection: 'row' }}>
                             {
-                                modal.imgUrls.map((item) => {
-                                    return <ModalImage small={item} className="Icon" large={item} alt={modal.title} />
+                                modal.imgUrls.map((item, index) => {
+                                    return <ModalImage key={index} small={item} className="Icon" large={item} alt={modal.title} />
                                 })
                             }
                         </div>
