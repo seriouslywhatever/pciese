@@ -11,7 +11,7 @@ import '../App.css';
 import en from '../images/en.png';
 import sp from '../images/sp.png';
 import dropdown from '../images/dropdown.png';
-import logo from '../images/logo_transparent.png';
+import logo from '../images/Logo_white.png';
 import phone from '../images/phone.png';
 import location from '../images/location.png';
 import home from '../images/home_background.jpg';
@@ -41,6 +41,32 @@ import cmp2 from '../images/services/computos_metricos_part_2.png';
 const Home = () => {
     const { t, i18n } = useTranslation();
     const [langImg, setLangImg] = useState(en);
+
+    const [navStyle, setNavStyle] = useState({
+        flexDirection: 'row',
+        display: 'flex',
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000
+    });
+
+    // makes it so the navigation bar is not present when ServiceCard modal is opened.
+    const manageNav = (bool) => {
+        if (bool) {
+            setNavStyle((prevStyle) => ({
+                ...prevStyle,
+                // zIndex: 0,
+                position: 'relative'
+            }));
+        } else {
+            setNavStyle((prevStyle) => ({
+                ...prevStyle,
+                // zIndex: 1000
+                position: 'sticky'
+            }));
+        }
+    };
+
     const DATA = [
         {
             title: `${t('Service card 1 title')}`,
@@ -53,7 +79,8 @@ const Home = () => {
                 `${t('Service card 1 body 5')}`,
             ],
             imgMain: section4,
-            imgUrls: []
+            imgUrls: [],
+            manageNav: manageNav
         },
         {
             title: `${t('Service card 2 title')}`,
@@ -62,21 +89,24 @@ const Home = () => {
                 `${t('Service card 2 body 1')}`,
             ],
             imgMain: section1,
-            imgUrls: []
+            imgUrls: [],
+            manageNav: manageNav
         },
         {
             title: `${t('Service card 3 title')}`,
             preText: `${t('Service card 3 preText')}`,
             body: [],
             imgMain: section2,
-            imgUrls: [apu]
+            imgUrls: [apu],
+            manageNav: manageNav
         },
         {
             title: `${t('Service card 4 title')}`,
             preText: `${t('Service card 4 preText')}`,
             body: [],
             imgMain: section5,
-            imgUrls: [ciet, cmp1, cmp2]
+            imgUrls: [ciet, cmp1, cmp2],
+            manageNav: manageNav
         },
         {
             title: `${t('Service card 5 title')}`,
@@ -87,14 +117,16 @@ const Home = () => {
                 `${t('Service card 5 body 3')}`
             ],
             imgMain: section3,
-            imgUrls: [cdi, cdd1, cdd2]
+            imgUrls: [cdi, cdd1, cdd2],
+            manageNav: manageNav
         },
         {
             title: `${t('Service card 6 title')}`,
             preText: `${t('Service card 6 preText')}`,
             body: [],
             imgMain: home,
-            imgUrls: []
+            imgUrls: [],
+            manageNav: manageNav
         },
         // {
         //   title: 'Inspection of Civil Works',
@@ -126,7 +158,6 @@ const Home = () => {
             <div className='Header' style={{ display: 'flex', flexDirection: 'row' }}>
                 <div style={{ display: 'flex', flex: 3, flexDirection: 'row' }}>
                     <img src={logo} className="App-logo" alt="logo" />
-                    {/* <p style={{alignSelf:'flex-end', fontWeight:'lighter'}}>D.A PCI SOLUTIONS CIVIL ENGINEERING VBA</p> */}
                 </div>
                 <div style={{ flex: 3 }}>
                     <div className='Header-icon-container'>
@@ -147,7 +178,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div style={{ flexDirection: 'row', display: 'flex', position: 'sticky', top: 0, zIndex: 1000 }}>
+            <div style={navStyle}>
                 <div style={{ flex: 8 }}>
                     <nav className="nav">
                         <ul className="nav-links">

@@ -4,12 +4,15 @@ import ModalImage from 'react-modal-image';
 
 import { useTranslation } from 'react-i18next';
 
-const ServiceCard = ({ modal }) => {
+const ServiceCard = ({ modal, manageNav }) => {
     const [openModal, setOpenModal] = useState(false);
     const { t } = useTranslation();
     return (
         <div className="container mx-auto p-4">
-            <Modal size="4xl" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }} dismissible show={openModal} onClose={() => setOpenModal(!openModal)}>
+            <Modal size="4xl" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }} dismissible show={openModal} onClose={() => {
+                setOpenModal(!openModal) 
+                modal.manageNav(false)
+                }}>
                 <Modal.Header>{modal.title}</Modal.Header>
                 <Modal.Body>
                     <div className="space-y-6">
@@ -33,11 +36,14 @@ const ServiceCard = ({ modal }) => {
             </Modal>
             <Card style={{ display: 'flex', alignContent: 'center' }}
                 renderImage={() => <img style={{ width: '100vmin', height: '12vw' }} src={modal.imgMain} alt="section image" />}>
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ fontSize: '1.1vw', textAlign:'center' }}>
+                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ fontSize: '1.1vw', textAlign: 'center' }}>
                     {modal.title}
                 </h5>
                 <div style={{ justifyContent: 'center', display: 'flex' }}>
-                    <Button onClick={() => { setOpenModal(!openModal) }} className='bg-blue-800 focus:outline-none focus:ring-2 focus:ring-gray-300'>{t('Learn more')}</Button>
+                    <Button onClick={() => {
+                        setOpenModal(!openModal)
+                        modal.manageNav(true)
+                    }} className='bg-blue-800 focus:outline-none focus:ring-2 focus:ring-gray-300'>{t('Learn more')}</Button>
                 </div>
             </Card>
         </div>

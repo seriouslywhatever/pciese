@@ -7,7 +7,7 @@ import '../App.css';
 import en from '../images/en.png';
 import sp from '../images/sp.png';
 import dropdown from '../images/dropdown.png';
-import logo from '../images/logo_transparent.png';
+import logo from '../images/Logo_white.png';
 import phone from '../images/phone.png';
 import location from '../images/location.png';
 

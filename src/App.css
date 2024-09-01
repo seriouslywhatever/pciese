@@ -2,11 +2,11 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  height: 1500px;
+  /* height: 1500px; */
 }
 
 .Header {
-  height: 15vh;
+  height: 18vh;
   width: 97vw;
   background-color: white;
   padding: 1%;
@@ -28,7 +28,7 @@
 }
 
 .App-logo {
-  height: 15vmin;
+  height: 14vmin;
   pointer-events: none;
   margin: 1%;
 }
