@@ -146,7 +146,7 @@ const Contact = () => {
                             <Label htmlFor="message" value={t('Message')} />
                         </div>
                         <Textarea name="message" id="message" placeholder={t('Placeholder comment')} required rows={4} />
-                        <Button className='bg-blue-800 focus:outline-none focus:ring-2 focus:ring-gray-300' type="submit">Submit</Button>
+                        <Button className='bg-blue-800 focus:outline-none focus:ring-2 focus:ring-gray-300' type="submit">{t('Submit')}</Button>
                     </form>
                 </div>
             </div>
