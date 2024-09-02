@@ -193,19 +193,19 @@ const Home = () => {
                         </div>
                     </BrowserView>
                     <MobileView>
-                        <div style={{ display:'flex', flexDirection:'column' }}>
-                            <div className='Header-item-container' style={{marginBlock:'2.5%'}}>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <div className='Header-item-container' style={{ marginBlock: '2.5%' }}>
                                 <div style={{ alignContent: 'center', marginRight: '2%' }}>
                                     <img src={phone} className="Icon" alt='phone icon' />
                                 </div>
                                 <div>
-                                    <p className='Icon-label' style={{marginInline:'0%'}}>{t('Call us')}<span style={{fontSize:'2vw', width:'100%'}}>+297-592-3348</span></p>
+                                    <p className='Icon-label' style={{ marginInline: '0%' }}>{t('Call us')}<span style={{ fontSize: '2vw', width: '100%' }}>+297-592-3348</span></p>
                                 </div>
                             </div>
                             <div className='Header-item-container'>
                                 <img src={location} className="Icon" alt='location icon' />
                                 <div>
-                                    <p className='Icon-label'>{t('Location')} <span style={{fontSize:'2vw', width: '100%' }}>Kamerling Onnestraat 8, Oranjestad Aruba</span></p>
+                                    <p className='Icon-label'>{t('Location')} <span style={{ fontSize: '2vw', width: '100%' }}>Kamerling Onnestraat 8, Oranjestad Aruba</span></p>
                                 </div>
                             </div>
                         </div>
@@ -241,6 +241,18 @@ const Home = () => {
                     </Dropdown>
                 </div>
             </div>
+            <BrowserView>
+                <div style={{ position: 'absolute', top: '28vh', right: '2vw' }}>
+                    <iframe src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_MAPS_API_KEY}
+                  &q=PCI+Easy+Solutions,Oranjestad+Aruba&zoom=17`} style={{ width: '30vw', height: '50vh' }} loading='lazy' ></iframe>
+                </div>
+            </BrowserView>
+            <MobileView>
+                <div style={{ position: 'absolute', top: '18vh', right: '2vw' }}>
+                    <iframe src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_MAPS_API_KEY}
+                  &q=PCI+Easy+Solutions,Oranjestad+Aruba&zoom=16`} style={{ width: '50vw', height: '30vh' }} loading='lazy' ></iframe>
+                </div>
+            </MobileView>
             <img src={home} alt='main' style={{ height: isBrowser ? '100vh' : '50vh', width: '100%' }} />
             <div>
                 <div>
