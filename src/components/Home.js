@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import ServiceCard from './ServiceCard';
+import ServiceCardM from './ServiceCardM';
 import CustomTab from './CustomTab';
 import { HR, Dropdown } from "flowbite-react";
+import { BrowserView, MobileView, isBrowser } from 'react-device-detect';
 // import { Document, Page, pdfjs } from 'react-pdf';
 
 import '../App.css';
@@ -167,45 +169,65 @@ const Home = () => {
 
     return (
         <div className="App">
-            <div className='Header' style={{ display: 'flex', flexDirection: 'row' }}>
+            <div className='Header' style={{ display: 'flex', flexDirection: 'row', height: isBrowser ? '18vh' : '10vh' }}>
                 <div style={{ display: 'flex', flex: 3, flexDirection: 'row' }}>
                     <img src={logo} className="App-logo" alt="logo" />
                 </div>
                 <div style={{ flex: 3 }}>
-                    <div className='Header-icon-container'>
-                        <div className='Header-item-container'>
-                            <div style={{ alignContent: 'center', marginRight: '2%' }}>
-                                <img src={phone} className="Icon" alt='phone icon' />
+                    <BrowserView>
+                        <div className='Header-icon-container'>
+                            <div className='Header-item-container'>
+                                <div style={{ alignContent: 'center', marginRight: '2%' }}>
+                                    <img src={phone} className="Icon" alt='phone icon' />
+                                </div>
+                                <div>
+                                    <p className='Icon-label'>{t('Call us')}<span>+297-592-3348</span></p>
+                                </div>
                             </div>
-                            <div>
-                                <p className='Icon-label'>{t('Call us')}<span>+297-592-3348</span></p>
+                            <div className='Header-item-container'>
+                                <img src={location} className="Icon" alt='location icon' />
+                                <div>
+                                    <p className='Icon-label'>{t('Location')} <span style={{ width: '20vw' }}>Kamerling Onnestraat 8, Oranjestad Aruba</span></p>
+                                </div>
                             </div>
                         </div>
-                        <div className='Header-item-container'>
-                            <img src={location} className="Icon" alt='location icon' />
-                            <div>
-                                <p className='Icon-label'>{t('Location')} <span style={{ width: '20vw' }}>Kamerling Onnestraat 8, Oranjestad Aruba</span></p>
+                    </BrowserView>
+                    <MobileView>
+                        <div style={{ display:'flex', flexDirection:'column' }}>
+                            <div className='Header-item-container' style={{marginBlock:'2.5%'}}>
+                                <div style={{ alignContent: 'center', marginRight: '2%' }}>
+                                    <img src={phone} className="Icon" alt='phone icon' />
+                                </div>
+                                <div>
+                                    <p className='Icon-label' style={{marginInline:'0%'}}>{t('Call us')}<span style={{fontSize:'2vw', width:'100%'}}>+297-592-3348</span></p>
+                                </div>
+                            </div>
+                            <div className='Header-item-container'>
+                                <img src={location} className="Icon" alt='location icon' />
+                                <div>
+                                    <p className='Icon-label'>{t('Location')} <span style={{fontSize:'2vw', width: '100%' }}>Kamerling Onnestraat 8, Oranjestad Aruba</span></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </MobileView>
                 </div>
             </div>
             <div style={navStyle}>
-                <div style={{ flex: 8 }}>
+                <div style={{ flex: isBrowser ? 8 : 6 }}>
                     <nav className="nav">
                         <ul className="nav-links">
-                            <li><a href="#top">{t('Home')}</a></li>
-                            <li><a href="#section_about_us">{t('About Us')}</a></li>
-                            <li><a href="#section_services">{t('Services')}</a></li>
-                            <li><Link to="/contact">{t('Contact Us')}</Link></li>
+                            <li><a style={{ fontSize: isBrowser ? '1.1vw' : '2.8vw' }} href="#top">{t('Home')}</a></li>
+                            <li><a style={{ fontSize: isBrowser ? '1.1vw' : '2.8vw' }} href="#section_about_us">{t('About Us')}</a></li>
+                            <li><a style={{ fontSize: isBrowser ? '1.1vw' : '2.8vw' }} href="#section_services">{t('Services')}</a></li>
+                            <li><Link style={{ fontSize: isBrowser ? '1.1vw' : '2.8vw' }} to="/contact">{t('Contact Us')}</Link></li>
                         </ul>
                     </nav>
                 </div>
-                <div style={{ display: 'flex', backgroundColor: '#1e429f', flex: 1 }}>
+                <div style={{ display: 'flex', backgroundColor: '#1e429f', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                     <Dropdown dismissOnClick={true} renderTrigger={() =>
-                        <div style={{ display: 'flex', flexDirection: 'row', marginTop: '1vh' }}>
-                            <img src={langImg} style={{ width: '2.5vw', height: '5vh' }} alt="logo" />
-                            <img src={dropdown} style={{ width: '2vw', height: '5vh' }} alt="logo" />
+                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                            <img src={langImg} style={{ width: isBrowser ? '2.5vw' : '7vw', height: isBrowser ? '5vh' : '6vh' }} alt="logo" />
+                            <img src={dropdown} style={{ width: isBrowser ? '2vw' : '5vw', height: isBrowser ? '5vh' : '6vh' }} alt="logo" />
                         </div>
                     } size="sm" >
                         <Dropdown.Item onClick={() => {
@@ -219,66 +241,77 @@ const Home = () => {
                     </Dropdown>
                 </div>
             </div>
-            <img src={home} alt='main' style={{ height: '100vh', width: '100%' }} />
+            <img src={home} alt='main' style={{ height: isBrowser ? '100vh' : '50vh', width: '100%' }} />
             <div>
                 <div>
                     <HR.Trimmed id='section_about_us' />
                     <div className='section-heading'>
                         <span className="line"></span>
-                        <h1 className='section-title'>{t('About Us')}</h1>
+                        <h1 className='section-title' style={{ fontSize: isBrowser ? '2.2vw' : '6vw' }}>{t('About Us')}</h1>
                         <span className="line"></span>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'center', fontStyle: 'italic', marginBottom: '2%' }}>
-                        <p>{t('Testimonial part 1')} <br /> {t('Testimonial part 2')}</p>
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <div style={{ width: '55vw' }}>
-                            <p>
-                                {t('About part 1')}<br /> {t('About part 2')} </p>
-                            <br />
-                            <CustomTab />
+                    <BrowserView>
+                        <div style={{ display: 'flex', justifyContent: 'center', fontStyle: 'italic', marginBottom: '2%' }}>
+                            <p>{t('Testimonial part 1')} <br /> {t('Testimonial part 2')}</p>
                         </div>
-                    </div>
+                    </BrowserView>
+                    <MobileView>
+                        <div style={{ display: 'flex', justifyContent: 'center', fontStyle: 'italic', marginBottom: '2%', marginInline: '10%' }}>
+                            <p style={{ fontSize: '3.5vw' }}>{t('Testimonial part 1')}{t('Testimonial part 2')}</p>
+                        </div>
+                    </MobileView>
+                    <BrowserView>
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <div style={{ width: '55vw' }}>
+                                <p>
+                                    {t('About part 1')}<br /> {t('About part 2')} </p>
+                                <br />
+                                <CustomTab />
+                            </div>
+                        </div>
+                    </BrowserView>
+                    <MobileView>
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <div style={{ width: '75vw' }}>
+                                <p style={{ fontSize: '3.5vw' }}>
+                                    {t('About part 1')}{t('About part 2')} </p>
+                                <br />
+                                <CustomTab />
+                            </div>
+                        </div>
+                    </MobileView>
                 </div>
                 <HR.Trimmed id='section_services' />
                 <div>
                     <div className='section-heading'>
                         <span className="line"></span>
-                        <h1 className='section-title'>{t('Services')}</h1>
+                        <h1 className='section-title' style={{ fontSize: isBrowser ? '2.2vw' : '6vw' }}>{t('Services')}</h1>
                         <span className="line"></span>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold', marginBottom: '2%', fontSize: '1.5vw' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', fontWeight: 'bold', marginBottom: '2%', fontSize: isBrowser ? '1.5vw' : '4vw' }}>
                         <p>{t('Service subtext')}</p>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', margin: '0 10%' }}>
-                        <ServiceCard modal={DATA[0]} />
-                        <ServiceCard modal={DATA[1]} />
-                        <ServiceCard modal={DATA[2]} />
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', margin: '0 10%' }}>
-                        <ServiceCard modal={DATA[3]} />
-                        <ServiceCard modal={DATA[4]} />
-                        <ServiceCard modal={DATA[5]} />
-                    </div>
-                    {/* <div style={{ display: 'flex', justifyContent: 'center', margin: '0 10%' }}>
-            <div style={{ width: '33%' }}>
-              <ServiceCard modal={DATA[6]} />
-            </div>
-          </div> */}
-                    <div>
-                        {/* <Document file={pdf}>
-              <Page pageNumber={1}/>
-            </Document> */}
-                    </div>
+                    <BrowserView>
+                        <div style={{ display: 'flex', flexDirection: 'row', margin: '0 10%' }}>
+                            <ServiceCard modal={DATA[0]} />
+                            <ServiceCard modal={DATA[1]} />
+                            <ServiceCard modal={DATA[2]} />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row', margin: '0 10%' }}>
+                            <ServiceCard modal={DATA[3]} />
+                            <ServiceCard modal={DATA[4]} />
+                            <ServiceCard modal={DATA[5]} />
+                        </div>
+                    </BrowserView>
+                    <MobileView>
+                        <ServiceCardM modal={DATA[0]} />
+                        <ServiceCardM modal={DATA[1]} />
+                        <ServiceCardM modal={DATA[2]} />
+                        <ServiceCardM modal={DATA[3]} />
+                        <ServiceCardM modal={DATA[4]} />
+                        <ServiceCardM modal={DATA[5]} />
+                    </MobileView>
                 </div>
-                {/* <div style={{ backgroundColor: 'black', height: '40vh', marginTop: '5%' }}>
-          <div className='section-heading'>
-            <span className="line" style={{backgroundColor:'white'}}></span>
-            <h1 className='section-title' style={{color:'white'}}> Testimonials</h1>
-            <span className="line" style={{backgroundColor:'white'}}></span>
-          </div>
-          <p style={{color:'white'}}>In our professional life, there are highs and lows, which are evident everywhere. For this, perseverance and consistency are our best protectors against adversity.</p>
-        </div> */}
             </div>
         </div>
     );

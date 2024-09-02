@@ -4,15 +4,15 @@ import ModalImage from 'react-modal-image';
 
 import { useTranslation } from 'react-i18next';
 
-const ServiceCard = ({ modal, manageNav }) => {
+const ServiceCardM = ({ modal }) => {
     const [openModal, setOpenModal] = useState(false);
     const { t } = useTranslation();
     return (
-        <div className="container mx-auto p-4">
-            <Modal size="4xl" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }} dismissible show={openModal} onClose={() => {
-                setOpenModal(!openModal) 
+        <div className="container p-4">
+            <Modal size="3xl" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }} dismissible show={openModal} onClose={() => {
+                setOpenModal(!openModal)
                 modal.manageNav(false)
-                }}>
+            }}>
                 <Modal.Header>{modal.title}</Modal.Header>
                 <Modal.Body>
                     <div className="space-y-6">
@@ -34,20 +34,20 @@ const ServiceCard = ({ modal, manageNav }) => {
                     </div>
                 </Modal.Body>
             </Modal>
-            <Card style={{ display: 'flex', alignContent: 'center' }}
-                renderImage={() => <img style={{ width: '100vmin', height: '12vw' }} src={modal.imgMain} alt="section" />}>
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white whitespace-nowrap max-w-full" style={{ fontSize: '1.1vw', textAlign: 'center' }}>
-                    {modal.title}
-                </h5>
-                <div style={{ justifyContent: 'center', display: 'flex' }}>
+            <Card style={{ flexDirection: 'row' }}
+                renderImage={() => <img style={{ width: '30vmin', height: '40vw' }} src={modal.imgMain} alt="section" />}>
+                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ fontSize: '2.5vw' }}>
+                        {modal.title}
+                    </h5>
+                <div >
                     <Button onClick={() => {
                         setOpenModal(!openModal)
                         modal.manageNav(true)
-                    }} className='bg-blue-800 focus:outline-none focus:ring-2 focus:ring-gray-300 whitespace-nowrap max-w-full'>{t('Learn more')}</Button>
+                    }} className='bg-blue-800 focus:outline-none focus:ring-2 focus:ring-gray-300'>{t('Learn more')}</Button>
                 </div>
             </Card>
         </div>
     );
 }
 
-export default ServiceCard;
+export default ServiceCardM;
